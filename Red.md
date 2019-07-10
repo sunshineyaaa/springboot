@@ -13,7 +13,7 @@
 
 [mvnre](https://mvnrepository.com/)
 
-[sunshine] (47.106.158.212)
+[sunshine](47.106.158.212)
 
 
 ### 工具需求
