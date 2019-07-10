@@ -11,6 +11,8 @@
 
 [mybatis](http://www.mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure)
 
+[mvnre](https://mvnrepository.com/)
+
 
 ### 工具需求
 git 网站
