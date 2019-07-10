@@ -13,12 +13,18 @@
 
 [mvnre](https://mvnrepository.com/)
 
+<<<<<<< HEAD
 [algs4](https://algs4.cs.princeton.edu/13stacks/)
 
 [lintcode](https://www.lintcode.com)
+=======
+[sunshine](47.106.158.212)
+
+>>>>>>> b1f0cf649cca8878612e5e09781f1a9c893e23b3
 
 ### 工具需求
-git 网站
+git 网站 
+idea集成mybatis 
 
 ### 脚本语言
 ```sql
