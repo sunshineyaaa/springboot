@@ -13,9 +13,12 @@
 
 [mvnre](https://mvnrepository.com/)
 
+[sunshine] (47.106.158.212)
+
 
 ### 工具需求
-git 网站
+git 网站 
+idea集成mybatis 
 
 ### 脚本语言
 ```sql
