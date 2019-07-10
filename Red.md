@@ -7,5 +7,27 @@
 
 [bootstrap](https://v3.bootcss.com/components/#navbar)
 
+[h2shujuku](http://www.h2database.com/html/quickstart.html)
+
+[mybatis](http://www.mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure)
+
+
 ### 工具需求
 git 网站
+
+### 脚本语言
+```sql
+create table USER
+(
+  ID           INTEGER   primary key,
+  NAME         VARCHAR(50),
+  ACCOUNT_ID   VARCHAR(100),
+  TOKEN        CHAR(36),
+  GMT_CREATE   BIGINT,
+  GMT_MODIFIED BIGINT
+);
+
+
+
+
+```
