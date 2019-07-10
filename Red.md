@@ -13,6 +13,9 @@
 
 [mvnre](https://mvnrepository.com/)
 
+[algs4](https://algs4.cs.princeton.edu/13stacks/)
+
+[lintcode](https://www.lintcode.com)
 
 ### 工具需求
 git 网站
