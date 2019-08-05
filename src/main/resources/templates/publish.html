@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>publish - sunshine</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="/css/sunshine.css"/>
+    <link rel="stylesheet" href="/css/editormd.min.css"/>
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="/js/community.js" type="application/javascript"></script>
+    <script src="/js/editormd.min.js" type="application/javascript"></script>
+    <!--咱也不知道原因 咱也不敢问 总之就是以后后面不要再加前面的目录-->
+</head>
+<body>
+<div th:insert="~{nagivation :: nav}"></div>
+<div class="container-fluid main">
+    <div class="row">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+            <h2><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>发起</h2>
+            <hr>
+            <input type="hidden" name="id" th:value="${id}">
+            <form action="/publish " method="post">
+                <div class="form-group">
+                    <label for="title">问题标题（简单扼要）：</label>second
+                    <input type="text" class="form-control" th:value="${title}" id = "title" name="title" placeholder="问题标题……">
+                </div>
+                <!--mackdown 项目相关依赖-->
+                <div class="form-group" id="question-editor">
+                    <label for="description">问题补充（必填，请参照右侧提示）</label>
+                    <textarea name="description" th:text="${description}" style="display:none;"
+                              id="description" class="form-control"
+                              cols="30"
+                              rows="10">
+
+                    </textarea>
+                </div>
+                <script type="text/javascript">
+                    $(function() {
+                        var editor = editormd("question-editor", {
+                            width  : "100%",
+                             height : "350px",
+                            path   : "/js/lib/",
+                            delay:1,
+                            imageUpload    : true,
+                            imageFormats   : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                            imageUploadURL : "/file/upload",
+                            watch:false,
+                            placeholder:"请输入问题描述"
+                        });
+                    });
+                </script>
+                <!--项目相关联的依赖-->
+                <div class="form-group">
+                    <label for="tag">添加标签：</label>
+                    <input type="text" class="form-control" th:value="${tag}" id="tag" name="tag"
+                           autocomplete="off"
+                           placeholder="输入标签，以 ,分割 "
+                          onclick="ShowSelectTag()"
+                    >
+                    <div id="select-tag" class="publish-tag-tab">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" th:each="selectCategory,selectCategoryStat: ${tags}"
+                                th:class="${selectCategoryStat.first ? 'active':''}">
+                                <a th:href="${'#'+selectCategory.categoryName}" aria-controls="home" role="tab"
+                                   data-toggle="tab" th:text="${selectCategory.categoryName}"></a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" th:id="${selectCategory.categoryName}"
+                                 th:each="selectCategory: ${tags}"
+                                 th:class="${selectCategoryStat.first ? 'active tab-pane':'tab-pane'}">
+                                <span>
+                                    <span class="label label-info" th:each="selectTag: ${selectCategory.tags}">
+                                    <span class="glyphicon glyphicon-tags" onclick="selectTag(this)"
+                                          th:data-tag="${selectTag}"
+                                          th:text="${' '+selectTag}">
+                                    </span>
+                                </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--//这边我们设计的是在我们的标签按钮下的相关展示问题（这里面的代码大概也算是能够理解得到 然后我们想要做的是想要他们能够在我们的服务端进行展示和修改 座椅需要写上一个服务端-->
+                   <!--// 的信息）-->
+                    <!--<div id="select-tag" class="publish-tag-tab">-->
+                        <!--<ul class="nav nav-tabs" role="tablist" >-->
+                            <!--&lt;!&ndash;z这里是publish页面 我们找到我们publishcontroller控制台 然后找到tags 把我们在TagCache里面写的元素拿出来&ndash;&gt;-->
+                            <!--<li role="presentation" th:each="select:${tags}"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" th:text="${selectTag.categoryName}"></a></li>-->
+                        <!--</ul>-->
+                        <!--<div class="tab-content">-->
+                            <!--<div role="tabpanel" class="tab-pane active" id="home">-->
+                                <!--<span class="label label-info"> <span class="glyphicon glyphicon-tags" onclick="selectTag('spring')">spring</span></span>-->
+                            <!--</div>-->
+                            <!--<div role="tabpanel" class="tab-pane" id="profile">-->
+                                <!--<span class="label label-info"> <span class="glyphicon glyphicon-tags" onclick="selectTag('Java')">Java</span></span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                <!--</div>-->
+                <div class="container-fluid main">
+                    <div class="row">
+                        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                            <div class="alert alert-danger col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                                th:text="${error}"
+                                th:if="${error!=null}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                            <button type="submit" class="btn btn-success publish">
+                                发布信息
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12" >
+            <h3>问题发起指南</h3>
+            <h5>问题标题：</h5>请用精简的语言描述您发布的问题，不超过25个字。 <br>
+            <h5>问题补充：</h5>详细补充您的问题内容，并确保问题描述清晰直观，并提供一些相关资料。 <br>
+            <h5>选择标签：</h5>选择一个或多个合适的标签，用逗号隔开，每个标签不超过10个字。 <br>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,8 +1,9 @@
 package com.sunshine.sunshine.controller;
 
+import com.sunshine.sunshine.dto.PaginationDTO;
 import com.sunshine.sunshine.mapper.UserMapper;
 import com.sunshine.sunshine.model.User;
-import org.apache.ibatis.annotations.Mapper;
+import com.sunshine.sunshine.provider.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import  org.springframework.ui.Model;
@@ -17,23 +18,17 @@ import javax.servlet.http.HttpServletRequest;
 public class IndexController {
 
     @Autowired
-    private UserMapper userMapper;
+    private QuestionService questionService;
+
     @GetMapping("/")
-    public String index(HttpServletRequest request){
-        Cookie[] cookies=request.getCookies();
-        for(Cookie cookie:cookies)
-        {
-            if(cookie.getName().equals("token"))
-            {
-                String token=cookie.getValue();
-                User user=userMapper.findByToken(token);
-                if(user!=null)
-                {
-                    request.getSession().setAttribute("user",user);
-                }
-                break;
-            }
-        }
+    public String index(Model model,
+                              @RequestParam(name="page",defaultValue = "1") Integer page,
+                              @RequestParam(name="size",defaultValue = "2")Integer size,
+//        这里来实现搜索功能
+                              @RequestParam(name="search",required = false)String search)
+    {
+        PaginationDTO pagination= questionService.list(search,page,size);
+        model.addAttribute("pagination",pagination);
         return "index";
     }
 

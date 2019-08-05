@@ -1,0 +1,112 @@
+body
+{
+    background-color: #efefef;
+}
+.main
+{
+    background-color: white;
+    margin: 30px;
+}
+.question-tag{
+    margin-right: 5px;
+}
+
+.publish
+{
+    float: right;
+    margin-bottom:15px;
+}
+.publish-tag-tab{
+    display: none;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+.label-info{
+    margin-right: 5px;
+    white-space: normal;
+    display: inline-block;
+}
+.media-object
+{
+    width: 38px;
+    height: 38px;
+}
+.media-body{
+    padding-top: 10px;
+}
+.text-desc
+{
+    font-size :12px;
+    font-weight: normal;
+    color: #999;
+}
+.profile .section{
+    margin-top: 15px;
+}
+.community-menu
+{
+    color: #999;
+    font-size: 13px;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+.comment{
+    margin: 10px;
+}
+.but-comment
+{
+    float: right;
+    margin-bottom: 10px;
+
+}
+.comment-sp{
+    margin-top: 0;
+}
+.comments{
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    border-bottom: 1px,solid,#eee;
+}
+.sub-comments{
+    /*我们这里修改的是子评论里面的边框部分*/
+    border-radius: 5px;
+    margin-top: 10px;
+    border:1px solid #eee;
+    padding-top: 12px;
+    margin-bottom: 14px;
+}
+.sub-comments.btnnn{
+    margin-top: 10px;
+}
+.menu{
+    color: #999;
+    margin-top: 5px;
+}
+.menu .comment-icon{
+    margin-right: 6px;
+    font-size: 15px;
+    cursor: pointer;
+}
+.menu .comment-icone{
+    font-size: 15px;
+    cursor: pointer;
+}
+.menu .comment-icone :hover {
+    color: #499ef3;
+}
+.menu .active{
+    color:#4999ef3;
+}
+.menu.comment-icon:hover{
+    color:#4999ef3;
+}
+.titles{
+    margin-top: 25px;
+}
+.question-related{
+    line-height: 20px;
+    /*font-size: 12px;*/
+    margin-left: 0;
+    list-style: none;
+    padding-left: 0;
+}

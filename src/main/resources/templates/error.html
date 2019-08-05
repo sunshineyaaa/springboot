@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>sunshine</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="/css/sunshine.css"/>
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+
+
+</head>
+<body>
+<div th:insert="~{nagivation :: nav}"></div>
+<div class="container-fluid main">
+    <div class="row">
+        <div class="jumbotron">
+            <h1>对不起，您访问的信息有误</h1>
+            <p th:text="${message}">对不起，您访问的服务器出走了，待会再来尝试哦！</p>
+            <p><a class="btn btn-primary btn-lg" href="/" role="button">先回家看看吧</a></p>
+        </div>
+
+</div>
+</body>
+</html>
